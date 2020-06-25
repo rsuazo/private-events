@@ -1,3 +1,5 @@
+<h1>Sign Up</h1>
+
 <%= form_with(model: @user) do %>
   <%= label_tag(:username, "Username:") %>
   <%= text_field(:user, :username) %></br></br>
@@ -5,5 +7,5 @@
   <%= email_field(:user, :email) %></br></br>
   <%= label_tag(:password, "Password:") %>
   <%= password_field(:user, :password) %></br></br>
-  <%= submit_tag("Submit") %>
+  <%= submit_tag("Sign Up") %>
 <% end %>

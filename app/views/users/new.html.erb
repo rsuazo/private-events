@@ -1,1 +1,9 @@
-<h1>Users are coming soon!</h1>
+<%= form_with(model: @user) do %>
+  <%= label_tag(:username, "Username:") %>
+  <%= text_field(:user, :username) %></br></br>
+  <%= label_tag(:email, "Email:") %>
+  <%= email_field(:user, :email) %></br></br>
+  <%= label_tag(:password, "Password:") %>
+  <%= password_field(:user, :password) %></br></br>
+  <%= submit_tag("Submit") %>
+<% end %>

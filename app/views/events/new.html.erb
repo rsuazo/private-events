@@ -1,0 +1,8 @@
+<h1>Create a New Event!</h1>
+
+<%= form_with(model: @event) do %>
+
+  <%= label_tag(:location, "Location:") %>
+  <%= text_field(:event, :location) %></br></br>
+  <%= submit_tag("Create Event!") %>
+<% end %>

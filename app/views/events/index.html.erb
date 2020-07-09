@@ -27,39 +27,23 @@ tr:nth-child(even) {
   </head>
 
   <body>
-    <h1>User Details</h1>
-
-    <table style="width:100%">
-      <tr>
-        <th>Username</th>
-        <th>Email</th>
-        
-      </tr>
-      <tr>
-        <td><%= @user.username %></td>
-        <td><%= @user.email %></td>
-      </tr>
-    </table>
+    <h1>Event Details</h1>
 
 
-<br>
-<br>
-    <table style="width:100%">
-      <tr>
-        <th>Event Name</th>
-        <th>Location</th>
-      </tr>
+      <table style="width:100%">
+        <tr>
+          <th>Event ID</th>
+          <th>Event Location</th>
+          <th>Event Creator</th>
+        </tr>
 
-        <% @user.created_events.each do |event| %>
-          <tr>
-            <td><%= event.id %></td>
-            <td><%= event.location %></td>
-          </tr>
+          <% @events.each do |event| %>
+            <tr>
+              <td><%= event.id %></td>
+              <td><%= event.location %></td>
+              <td><%= event.creator_id %></td>
+            </tr>
         <% end %>
-    </table>
-
-<br>
-<br>
-
+      </table>
   </body>
 </html>

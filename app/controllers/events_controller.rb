@@ -1,7 +1,12 @@
 class EventsController < ApplicationController
 
   def new
-    @event = Event.new
+
+    if session[:user_id].nil?
+      redirect_to login_path
+    else
+      @event = Event.new
+    end
   end
 
   def index
@@ -9,25 +14,12 @@ class EventsController < ApplicationController
   end
 
   def create
+    
+    @event = Event.create(parameters)
 
-    # def current_user
-    #   @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    # end
-    # helper_method :current_user
-
-    # def create
-    #   @user = User.find_by_email(params[:email])
-    #   if @user && @user.authenticate(params[:password])
-    #     session[:user_id] = @user.id
-    #     redirect_to user_path(@user.id), notice: "Logged in!"
-    #   else
-    #     flash.now.alert = "Email or password is invalid"
-    #     render "new"
-    #   end
-    # end
-
-    # @event = Event.new(event_params)
-    @event = Event.create(location: params[:event][:location], creator_id: current_user.id)
+    
+    @event = User.find(session[:user_id]).created_events.build(location: params[:event][:location])
+    
 
     if @event.save
       redirect_to @event, notice: "Event Created, Robert! Your event was successfully saved!"
@@ -43,7 +35,7 @@ class EventsController < ApplicationController
   private
 
   # def event_params
-  #   params.require(:event).permit(:location, :creator_id)
+  #   params.require(:event).permit(:location)
   # end
 
 end

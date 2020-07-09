@@ -14,12 +14,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    
-    @event = Event.create(parameters)
-
-    
-    @event = User.find(session[:user_id]).created_events.build(location: params[:event][:location])
-    
+    @event = User.find(session[:user_id]).created_events.build(event_params)
 
     if @event.save
       redirect_to @event, notice: "Event Created, Robert! Your event was successfully saved!"
@@ -34,8 +29,8 @@ class EventsController < ApplicationController
 
   private
 
-  # def event_params
-  #   params.require(:event).permit(:location)
-  # end
+  def event_params
+    params.require(:event).permit(:location)
+  end
 
 end

@@ -43,5 +43,21 @@ tr:nth-child(even) {
       </tr>
     </table>
 
+<br>
+<br>
+
+    <h1>Event Attendees</h1>
+
+    <table style="width:100%">
+      <tr>
+        <th>User Name</th>
+      </tr>
+        <% @attendees.each do |attendee| %>
+          <tr>
+            <td><%= attendee.username %></td>
+          </tr>
+        <% end %>
+    </table>
+
   </body>
 </html>

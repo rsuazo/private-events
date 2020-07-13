@@ -41,9 +41,9 @@ tr:nth-child(even) {
             <tr>
               <td><%= event.id %></td>
               <td><%= event.location %></td>
-              <td><%= event.creator_id %></td>
+              <td><%= User.find(event.creator_id).username %></td>
             </tr>
-        <% end %>
+          <% end %>
       </table>
   </body>
 </html>

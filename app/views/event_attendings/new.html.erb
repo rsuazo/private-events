@@ -27,7 +27,7 @@ tr:nth-child(even) {
   </head>
 
   <body>
-    <h1>Event Details</h1>
+    <h1>Select an Event to Attend!</h1>
 
     <table style="width:100%">
       <tr>
@@ -35,41 +35,19 @@ tr:nth-child(even) {
         <th>Location</th>
         <th>Creator ID</th>
       </tr>
-      <tr>
-        <td><%= @event.id %></td>
-        <td><%= @event.location %></td>
-        <td><%= @event.creator_id %></td>
 
+
+    <%# <% @event_attending.each do |event| %>
+      <tr>
+        <%# <td><%= event.id %></td> %>
+        <%# <td><%= event.location %></td> %>
+        <%# <td><%= User.find(event.creator_id).username %></td> %>
       </tr>
+    <%# <% end %> %> %>
     </table>
 
 <br>
 <br>
-
-    <h1>Event Attendees</h1>
-
-    <table style="width:100%">
-      <tr>
-        <th>User Name</th>
-      </tr>
-        <% @attendees.each do |attendee| %>
-          <tr>
-            <td><%= attendee.username %></td>
-          </tr>
-        <% end %>
-    </table>
-
-<br>
-<br>
-
-  <%= form_with(url: event_attendings_path, method: "post") do %>
-
-    <%= hidden_field_tag(:event_id, @event.id) %>
-    <%= hidden_field_tag(:user_id, session[:user_id]) %>
-
-    <%= submit_tag("Sign Up!") %>
-  
-  <% end %>
 
   </body>
 </html>

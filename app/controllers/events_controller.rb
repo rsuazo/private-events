@@ -1,7 +1,6 @@
 class EventsController < ApplicationController
 
   def new
-
     if session[:user_id].nil?
       redirect_to login_path
     else
@@ -25,6 +24,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @event_attendings = EventAttending.new
     @attendees = @event.attendees.all
   end
 

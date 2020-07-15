@@ -45,8 +45,9 @@ tr:nth-child(even) {
 <br>
 <br>
     <table style="width:100%">
+      <h1>Hosted Events!</h1>
       <tr>
-        <th>Event Name</th>
+        <th>Event ID</th>
         <th>Location</th>
       </tr>
 
@@ -60,6 +61,19 @@ tr:nth-child(even) {
 
 <br>
 <br>
+
+    <table style="width:100%">
+      <h1>Events Attending!</h1>
+      <tr>
+        <th>Event Name</th>
+      </tr>
+
+        <% @user.event_attendings.each do |event| %>
+          <tr>
+            <td><%= Event.find(event.attended_event_id).location %></td>
+          </tr>
+        <% end %>
+    </table>
 
   </body>
 </html>

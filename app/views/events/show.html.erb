@@ -32,11 +32,13 @@ tr:nth-child(even) {
     <table style="width:100%">
       <tr>
         <th>Event ID</th>
+        <th>Event Start</th>
         <th>Location</th>
         <th>Creator ID</th>
       </tr>
       <tr>
         <td><%= @event.id %></td>
+        <td><%= @event.start_date %></td>
         <td><%= @event.location %></td>
         <td><%= @event.creator_id %></td>
 
@@ -70,6 +72,25 @@ tr:nth-child(even) {
     <%= submit_tag("Sign Up!") %>
   
   <% end %>
+
+
+  <h1>Update Event!</h1>
+
+  <%= form_with(model: @event, method: "patch") do %>
+
+  <%= label_tag(:location, "Description:") %>
+  <%= text_field(:event, :location) %>
+
+  </br></br>
+
+  <%= label_tag(:start_date, "Start Date:") %>
+  <%= date_field(:event, :start_date) %>
+
+  </br></br>
+
+  <%= submit_tag("Update Event!") %>
+  
+<% end %>
 
   </body>
 </html>

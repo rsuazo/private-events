@@ -33,6 +33,7 @@ tr:nth-child(even) {
       <table style="width:100%">
         <tr>
           <th>Event ID</th>
+          <th>Event Start Date</th>
           <th>Event Location</th>
           <th>Event Creator</th>
         </tr>
@@ -40,6 +41,7 @@ tr:nth-child(even) {
           <% @events.each do |event| %>
             <tr>
               <td><%= event.id %></td>
+              <td><%= event.start_date %></td>
               <td><%= event.location %></td>
               <td><%= User.find(event.creator_id).username %></td>
             </tr>

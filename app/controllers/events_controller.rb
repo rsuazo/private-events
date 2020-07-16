@@ -22,6 +22,12 @@ class EventsController < ApplicationController
     end
   end
 
+  def update
+    @event = Event.find(params[:id]).update(event_params)
+    
+    redirect_to event_path
+  end
+
   def show
     @event = Event.find(params[:id])
     @event_attendings = EventAttending.new
@@ -31,7 +37,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:location)
+    params.require(:event).permit(:location, :start_date)
   end
 
 end

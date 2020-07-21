@@ -13,12 +13,38 @@ class UsersController < ApplicationController
     redirect_to @user
   end
 
+  def show
+    @user = User.find(params[:id])
+    current_user = User.find(params[:id])
+    @upcoming_events = upcoming_events
+    @prev_events = prev_events
+  end
+
+  def upcoming_events
+    stuff = []
+    @user.event_attendings.each do |event|
+      if Event.find(event.attended_event_id).start_date > Date.today
+        stuff << Event.find(event.attended_event_id)
+      end
+    end
+    stuff
+  end
+
+  
+  def prev_events
+    stuff = []
+    @user.event_attendings.each do |event|
+      if Event.find(event.attended_event_id).start_date < Date.today
+        stuff << Event.find(event.attended_event_id)
+      end
+    end
+    stuff
+  end
+
+  private
+
   def user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
-  
 
-  def show
-    @user = User.find(params[:id])
-  end
 end

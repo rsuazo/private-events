@@ -4,4 +4,17 @@ class Event < ApplicationRecord
   
   
   belongs_to :creator, class_name: "User"
+
+  def future
+    if self.start_date > Date.today
+      true
+    end
+  end
+
+  def past
+    if self.start_date < Date.today
+      true
+    end
+  end
+    
 end

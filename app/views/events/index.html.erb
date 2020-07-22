@@ -38,15 +38,13 @@ tr:nth-child(even) {
         <th>Event Creator</th>
       </tr>
 
-        <% @events.each do |event| %>
-          <% if event.past %>
+        <% @past.each do |event| %>
             <tr>
                 <td><%= event.id %></td>
                 <td><%= event.start_date.strftime("%m / %d / %Y")%></td>
                 <td><%= event.location %></td>
                 <td><%= User.find(event.creator_id).username %></td>
             </tr>
-          <% end %>
         <% end %>
     </table>
 
@@ -59,19 +57,16 @@ tr:nth-child(even) {
         <th>Event Creator</th>
       </tr>
 
-        <% @events.each do |event| %>
-          <% if event.future %>
+        <% @upcoming.each do |event| %>
             <tr>
                 <td><%= event.id %></td>
                 <td><%= event.start_date.strftime("%m / %d / %Y")%></td>
                 <td><%= event.location %></td>
                 <td><%= User.find(event.creator_id).username %></td>
             </tr>
-          <% end %>
+
         <% end %>
     </table>
-
-
 
   </body>
 </html>

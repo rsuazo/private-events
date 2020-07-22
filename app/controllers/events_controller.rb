@@ -9,7 +9,8 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all
+    @upcoming = Event.upcoming(Date.today)
+    @past = Event.past(Date.today)
   end
 
   def create

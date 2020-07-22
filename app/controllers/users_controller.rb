@@ -21,24 +21,24 @@ class UsersController < ApplicationController
   end
 
   def upcoming_events
-    stuff = []
+    filtered_events = []
     @user.event_attendings.each do |event|
       if Event.find(event.attended_event_id).start_date > Date.today
-        stuff << Event.find(event.attended_event_id)
+        filtered_events << Event.find(event.attended_event_id)
       end
     end
-    stuff
+    filtered_events
   end
 
   
   def prev_events
-    stuff = []
+    filtered_events = []
     @user.event_attendings.each do |event|
       if Event.find(event.attended_event_id).start_date < Date.today
-        stuff << Event.find(event.attended_event_id)
+        filtered_events << Event.find(event.attended_event_id)
       end
     end
-    stuff
+    filtered_events
   end
 
   private
